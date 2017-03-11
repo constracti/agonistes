@@ -11,6 +11,7 @@ if ( !defined( 'ABSPATH' ) )
 $xa_tabs = [
 	'xa_settings' => __( 'Settings', 'xa' ),
 	'xa_users' => __( 'Users', 'xa' ),
+	'xa_pages' => __( 'Pages', 'xa' ),
 ];
 
 
@@ -83,6 +84,52 @@ add_action( 'wp_ajax_xa_option', function() {
 } );
 
 
+/* post meta handling */
+
+function xa_post_nonce( string $key, int $id ): string {
+	return sprintf( '%s_post_%d', $key, $id );
+}
+
+add_action( 'wp_ajax_xa_post_meta', function() {
+	if ( !current_user_can( 'administrator' ) )
+		exit( 'role' );
+	$id = intval( $_POST['id'] );
+	$key = $_POST['key'];
+	$action = xa_user_nonce( $key, $id );
+	if ( wp_verify_nonce( $_POST['nonce'], $action ) === FALSE )
+		exit( 'nonce' );
+	$value = $_POST['value'];
+	if ( $value !== '' )
+		update_post_meta( $id, $key, $value );
+	else
+		delete_post_meta( $id, $key );
+	xa_success();
+} );
+
+
+/* user meta handling */
+
+function xa_user_nonce( string $key, int $id ): string {
+	return sprintf( '%s_user_%d', $key, $id );
+}
+
+add_action( 'wp_ajax_xa_user_meta', function() {
+	if ( !current_user_can( 'administrator' ) )
+		exit( 'role' );
+	$id = intval( $_POST['id'] );
+	$key = $_POST['key'];
+	$action = xa_user_nonce( $key, $id );
+	if ( wp_verify_nonce( $_POST['nonce'], $action ) === FALSE )
+		exit( 'nonce' );
+	$value = $_POST['value'];
+	if ( $value !== '' )
+		update_user_meta( $id, $key, $value );
+	else
+		delete_user_meta( $id, $key );
+	xa_success();
+} );
+
+
 /* add menu and submenu pages */
 
 add_action( 'admin_menu', function() {
@@ -109,7 +156,7 @@ add_action( 'admin_menu', function() {
 add_action( 'admin_enqueue_scripts', function( $hook ) {
 	if ( !current_user_can( 'administrator' ) )
 		return;
-	if ( !in_array( $hook, ['toplevel_page_xa_settings'] ) )
+	if ( !in_array( $hook, ['toplevel_page_xa_settings', 'xa_page_xa_users'] ) )
 		return;
 	wp_enqueue_script( 'xa_main', XA_URL . '/main.js', ['jquery'] );
 } );
@@ -118,3 +165,5 @@ add_action( 'admin_enqueue_scripts', function( $hook ) {
 /* additional files */
 
 require_once( XA_DIR . '/settings.php' );
+require_once( XA_DIR . '/users.php' );
+require_once( XA_DIR . '/pages.php' );

@@ -33,7 +33,6 @@ jQuery( '.xa_option' ).change( function() {
 	xa_ajax( jQuery( this ), 'xa_option' );
 } );
 
-/*
 jQuery( '.xa_post_meta' ).change( function() {
 	xa_ajax( jQuery( this ), 'xa_post_meta' );
 } );
@@ -41,7 +40,6 @@ jQuery( '.xa_post_meta' ).change( function() {
 jQuery( '.xa_user_meta' ).change( function() {
 	xa_ajax( jQuery( this ), 'xa_user_meta' );
 } );
-*/
 
 jQuery( '.xa_button' ).click( function() {
 	var button = jQuery( this );

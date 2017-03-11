@@ -5,6 +5,7 @@ if ( !defined( 'ABSPATH' ) )
 
 # TODO rename option xa_author_category to xa_city_category
 # TODO rename user meta xa_author to xa_user_type
+# TODO delete sharing property
 
 function xa_settings_page() {
 	if ( !current_user_can( 'administrator' ) )
@@ -117,14 +118,14 @@ function xa_settings_page() {
 	echo sprintf( '<button type="button" id="%s" class="button xa_button" name="%s">%s</button>', $key, $key, __( 'clear', 'xa' ) ) . "\n";
 	xa_input_nonce( xa_option_nonce( $key ) );
 	xa_spinner();
-	xa_description( 'delete meta xa_city from unrelated pages' );
+	xa_description( 'delete meta xa_user_m and xa_user_f from unrelated pages' );
 	echo '</td>' . "\n";
 	echo '<td>' . "\n";
 	$key = 'xa_city_reset';
 	echo sprintf( '<button type="button" id="%s" class="button xa_button" name="%s" data-confirm="%s">%s</button>', $key, $key, __( 'sure?', 'xa' ), __( 'reset', 'xa' ) ) . "\n";
 	xa_input_nonce( xa_option_nonce( $key ) );
 	xa_spinner();
-	xa_description( 'delete meta xa_city from all pages' );
+	xa_description( 'delete meta xa_user_m and xa_user_f from all pages' );
 	echo '</td>' . "\n";
 	echo '</tr>' . "\n";
 	echo '</tbody>' . "\n";
@@ -233,16 +234,18 @@ add_action( 'wp_ajax_xa_city_clear', function() {
 	$page = get_option( 'xa_city_page' );
 	if ( $page === FALSE )
 		exit( 'option xa_city_page not set' );
-	$posts = get_posts( [
-		'post_parent__not_in' => intval( $page ),
-		'post_type' => 'page',
-		'post_status' => 'any',
-		'nopaging' => TRUE,
-		'meta_key' => 'xa_city',
-		'fields' => 'ids',
-	] );
-	foreach ( $posts as $post_id )
-		delete_post_meta( $post_id, 'xa_city' );
+	foreach ( ['xa_user_m', 'xa_user_f'] as $key ) {
+		$posts = get_posts( [
+			'post_parent__not_in' => [intval( $page )],
+			'post_type' => 'page',
+			'post_status' => 'any',
+			'nopaging' => TRUE,
+			'meta_key' => $key,
+			'fields' => 'ids',
+		] );
+		foreach ( $posts as $post_id )
+			delete_post_meta( $post_id, $key );
+	}
 	xa_success();
 } );
 
@@ -251,15 +254,17 @@ add_action( 'wp_ajax_xa_city_reset', function() {
 		exit( 'role' );
 	if ( wp_verify_nonce( $_POST['nonce'], $_POST['action'] ) === FALSE )
 		exit( 'nonce' );
-	$posts = get_posts( [
-		'post_type' => 'page',
-		'post_status' => 'any',
-		'nopaging' => TRUE,
-		'meta_key' => 'xa_city',
-		'fields' => 'ids',
-	] );
-	foreach ( $posts as $post )
-		delete_post_meta( $post_id, 'xa_city' );
+	foreach ( ['xa_user_m', 'xa_user_f'] as $key ) {
+		$posts = get_posts( [
+			'post_type' => 'page',
+			'post_status' => 'any',
+			'nopaging' => TRUE,
+			'meta_key' => $key,
+			'fields' => 'ids',
+		] );
+		foreach ( $posts as $post_id )
+			delete_post_meta( $post_id, $key );
+	}
 	xa_success();
 } );
 
@@ -296,7 +301,7 @@ add_action( 'wp_ajax_xa_synaxari_reset', function() {
 		'meta_key' => 'xa_synaxari',
 		'fields' => 'ids',
 	] );
-	foreach ( $posts as $post )
+	foreach ( $posts as $post_id )
 		delete_post_meta( $post_id, 'xa_synaxari' );
 	xa_success();
 } );

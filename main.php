@@ -28,9 +28,20 @@ function xa_header() {
 		$class = ['nav-tab'];
 		if ( $page === $active )
 			$class[] = 'nav-tab-active';
-		echo sprintf( '<a class="%s" href="%s?page=%s">%s</a>', implode( ' ', $class ), $url, $page, $title ) . "\n";
+		$url = menu_page_url( $page, FALSE );
+		echo sprintf( '<a class="%s" href="%s">%s</a>', implode( ' ', $class ), $url, $title ) . "\n";
 	}
 	echo '</h2>' . "\n";
+}
+
+function xa_footer() {
+	echo '<hr />' . "\n";
+	echo sprintf( '<p class="dashicons-before dashicons-info">%s</p>', __( 'Options are immediately saved.', 'xa' ) );
+	echo '</div>' . "\n";
+}
+
+function xa_notice( string $class, string $message ) {
+	echo sprintf( '<div class="notice notice-%s inline"><p>%s</p></div>', $class, $message ) . "\n";
 }
 
 function xa_hidden( string $name, string $value ) {
@@ -48,12 +59,6 @@ function xa_spinner() {
 
 function xa_description( string $description ) {
 	echo sprintf( '<p class="description">%s</p>', $description ) . "\n";
-}
-
-function xa_footer() {
-	echo '<hr />' . "\n";
-	echo sprintf( '<p class="dashicons-before dashicons-info">%s</p>', __( 'Options are immediately saved.', 'xa' ) );
-	echo '</div>' . "\n";
 }
  
 function xa_success( array $array = [] ) {
@@ -95,7 +100,7 @@ add_action( 'wp_ajax_xa_post_meta', function() {
 		exit( 'role' );
 	$id = intval( $_POST['id'] );
 	$key = $_POST['key'];
-	$action = xa_user_nonce( $key, $id );
+	$action = xa_post_nonce( $key, $id );
 	if ( wp_verify_nonce( $_POST['nonce'], $action ) === FALSE )
 		exit( 'nonce' );
 	$value = $_POST['value'];
@@ -156,7 +161,7 @@ add_action( 'admin_menu', function() {
 add_action( 'admin_enqueue_scripts', function( $hook ) {
 	if ( !current_user_can( 'administrator' ) )
 		return;
-	if ( !in_array( $hook, ['toplevel_page_xa_settings', 'xa_page_xa_users'] ) )
+	if ( !in_array( $hook, ['toplevel_page_xa_settings', 'xa_page_xa_users', 'xa_page_xa_pages'] ) )
 		return;
 	wp_enqueue_script( 'xa_main', XA_URL . '/main.js', ['jquery'] );
 } );

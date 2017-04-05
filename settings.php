@@ -11,11 +11,12 @@ function xa_settings_page() {
 	if ( !current_user_can( 'administrator' ) )
 		return;
 	xa_header();
+	echo sprintf( '<h2>%s</h2>', __( 'Authors', 'xa' ) ) . "\n";
 	echo '<table class="form-table">' . "\n";
 	echo '<tbody>' . "\n";
 	echo '<tr>' . "\n";
 	$key = 'xa_author_category';
-	echo sprintf( '<th scope="row"><label for="%s">%s</label></th>', $key, __( 'parent category', 'xa' ) ) . "\n";
+	echo sprintf( '<th scope="row"><label for="%s">%s</label></th>', $key, __( 'city author parent category', 'xa' ) ) . "\n";
 	echo '<td colspan="2">' . "\n";
 	echo sprintf( '<select id="%s" class="xa_option" name="%s">', $key, $key ) . "\n";
 	echo sprintf( '<option>%s</option>', _x( 'none', 'f', 'xa' ) ) . "\n";
@@ -38,7 +39,7 @@ function xa_settings_page() {
 	echo '</td>' . "\n";
 	echo '</tr>' . "\n";
 	echo '<tr>' . "\n";
-	echo sprintf( '<th scope="row">%s</th>', __( 'user type property', 'xa' ) ) . "\n";
+	echo sprintf( '<th scope="row">%s</th>', __( 'author type property', 'xa' ) ) . "\n";
 	echo '<td>' . "\n";
 	$key = 'xa_user_type_clear';
 	echo sprintf( '<button type="button" id="%s" class="button xa_button" name="%s">%s</button>', $key, $key, __( 'clear', 'xa' ) ) . "\n";
@@ -56,7 +57,7 @@ function xa_settings_page() {
 	echo '</tr>' . "\n";
 	echo '<tr>' . "\n";
 	$key = 'xa_author_guide_page';
-	echo sprintf( '<th scope="row"><label for="%s">%s</label></th>', $key, __( 'author guide page', 'xa' ) ) . "\n";
+	echo sprintf( '<th scope="row"><label for="%s">%s</label></th>', $key, __( 'city author guide page', 'xa' ) ) . "\n";
 	echo '<td colspan="2">' . "\n";
 	echo sprintf( '<select id="%s" class="xa_option" name="%s">', $key, $key ) . "\n";
 	echo sprintf( '<option>%s</option>', _x( 'none', 'f', 'xa' ) ) . "\n";
@@ -88,7 +89,7 @@ function xa_settings_page() {
 	echo '<tbody>' . "\n";
 	echo '<tr>' . "\n";
 	$key = 'xa_city_page';
-	echo sprintf( '<th scope="row"><label for="%s">%s</label></th>', $key, __( 'parent page', 'xa' ) ) . "\n";
+	echo sprintf( '<th scope="row"><label for="%s">%s</label></th>', $key, __( 'city parent page', 'xa' ) ) . "\n";
 	echo '<td colspan="2">' . "\n";
 	echo sprintf( '<select id="%s" class="xa_option" name="%s">', $key, $key ) . "\n";
 	echo sprintf( '<option>%s</option>', _x( 'none', 'f', 'xa' ) ) . "\n";

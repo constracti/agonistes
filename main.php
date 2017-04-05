@@ -10,8 +10,8 @@ if ( !defined( 'ABSPATH' ) )
 
 $xa_tabs = [
 	'xa_settings' => __( 'Settings', 'xa' ),
-	'xa_users' => __( 'Users', 'xa' ),
-	'xa_pages' => __( 'Pages', 'xa' ),
+	'xa_authors' => __( 'Authors', 'xa' ),
+	'xa_cities' => __( 'Cities', 'xa' ),
 ];
 
 
@@ -161,7 +161,7 @@ add_action( 'admin_menu', function() {
 add_action( 'admin_enqueue_scripts', function( $hook ) {
 	if ( !current_user_can( 'administrator' ) )
 		return;
-	if ( !in_array( $hook, ['toplevel_page_xa_settings', 'xa_page_xa_users', 'xa_page_xa_pages'] ) )
+	if ( !in_array( $hook, ['toplevel_page_xa_settings', 'xa_page_xa_authors', 'xa_page_xa_cities'] ) )
 		return;
 	wp_enqueue_script( 'xa_main', XA_URL . '/main.js', ['jquery'] );
 } );
@@ -170,5 +170,11 @@ add_action( 'admin_enqueue_scripts', function( $hook ) {
 /* additional files */
 
 require_once( XA_DIR . '/settings.php' );
-require_once( XA_DIR . '/users.php' );
-require_once( XA_DIR . '/pages.php' );
+require_once( XA_DIR . '/authors.php' );
+require_once( XA_DIR . '/cities.php' );
+
+require_once( XA_DIR . '/city_author_metabox.php' );
+require_once( XA_DIR . '/category_author.php' );
+require_once( XA_DIR . '/synaxari-metabox.php' );
+
+require_once( XA_DIR . '/widgets/index.php' );

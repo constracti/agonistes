@@ -1,0 +1,29 @@
+.xa-beside-new-widget .xa-beside>li {
+	position: relative;
+	float: left;
+	margin-bottom: 10px;
+	margin-right: 2%;
+	width: 48%;
+}
+
+.xa-beside-new-widget .xa-image {
+	width: 100%;
+	padding-bottom: 71.5%;
+	position: relative;
+}
+
+.xa-beside-new-widget .xa-image>a {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+}
+
+.xa-beside-new-widget .xa-image>a>img {
+	height: 100%;
+	width: auto;
+}
+
+.xa-beside-new-widget .above-entry-meta {
+	display: initial;
+}

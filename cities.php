@@ -3,7 +3,7 @@
 if ( !defined( 'ABSPATH' ) )
 	exit;
 
-function xa_pages_page() {
+function xa_cities_page() {
 	if ( !current_user_can( 'administrator' ) )
 		return;
 	xa_header();
@@ -12,7 +12,7 @@ function xa_pages_page() {
 	if ( get_option( 'xa_city_page' ) === FALSE ) {
 		xa_notice( 'error', 'option xa_city_page not set' );
 	} else {
-		$table = new XA_Pages_Table();
+		$table = new XA_Cities_Table();
 		$table->prepare_items();
 		$table->display();
 	}
@@ -22,7 +22,7 @@ function xa_pages_page() {
 if ( !class_exists( 'WP_List_Table' ) )
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 
-final class XA_Pages_Table extends WP_List_Table {
+final class XA_Cities_Table extends WP_List_Table {
 
 	private $url;
 	private $users;

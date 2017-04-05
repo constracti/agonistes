@@ -1,0 +1,23 @@
+/*
+Theme Name:  XA ColorMag
+Description: Colormag Child Theme
+Author:      Const R.
+Template:    colormag
+Text Domain: xa
+*/
+
+#header-text-nav-wrap {
+	padding: 0px;
+}
+.header-image {
+	border-bottom: 0px;
+}
+
+/* fix Gallery Carousel Without JetPack */
+#jp-carousel-comment-form-container, .jp-carousel-comments, #jp-carousel-comments-loading {
+	display: none !important;
+}
+
+li#menu-item-29999 > a {
+	background-color: #dd9933;
+}

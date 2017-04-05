@@ -3,14 +3,14 @@
 if ( !defined( 'ABSPATH' ) )
 	exit;
 
-function xa_users_page() {
+function xa_authors_page() {
 	if ( !current_user_can( 'administrator' ) )
 		return;
 	xa_header();
 	xa_description( 'set user meta xa_author' );
 	xa_description( 'only non-subscribers are listed' );
-	xa_description( 'c for category authors, m for male authors and f for female authors' );
-	$table = new XA_Users_Table();
+	xa_description( 'c for category authors, m for city male authors and f for city female authors' );
+	$table = new XA_Authors_Table();
 	$table->prepare_items();
 	$table->display();
 	xa_footer();
@@ -19,16 +19,16 @@ function xa_users_page() {
 add_action( 'admin_enqueue_scripts', function( $hook ) {
 	if ( !current_user_can( 'administrator' ) )
 		return;
-	if ( $hook !== 'xa_page_xa_users' )
+	if ( $hook !== 'xa_page_xa_authors' )
 		return;
-	wp_enqueue_style( 'xa_users', XA_URL . '/users.css' );
-	wp_enqueue_script( 'xa_users', XA_URL . '/users.js', ['jquery'] );
+	wp_enqueue_style( 'xa_authors', XA_URL . '/authors.css' );
+	wp_enqueue_script( 'xa_authors', XA_URL . '/authors.js', ['jquery'] );
 } );
 
 if ( !class_exists( 'WP_List_Table' ) )
 	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 
-final class XA_Users_Table extends WP_List_Table {
+final class XA_Authors_Table extends WP_List_Table {
 
 	private $url;
 	private $types;
@@ -91,8 +91,8 @@ final class XA_Users_Table extends WP_List_Table {
 		$this->url = admin_url( 'user-edit.php' );
 		$this->types = [
 			'c' => __( 'category', 'xa' ),
-			'm' => _x( 'author', 'm', 'xa' ),
-			'f' => _x( 'author', 'f', 'xa' ),
+			'm' => __( 'male author', 'xa' ),
+			'f' => __( 'female author', 'xa' ),
 		];
 	}
 

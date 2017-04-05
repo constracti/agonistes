@@ -1,0 +1,21 @@
+.xa-synaxari-new-widget .xa-synaxari {
+	position: relative;
+}
+
+.xa-synaxari-new-widget .xa-image {
+	width: 100%;
+	padding-bottom: 71.5%;
+	position: relative;
+}
+
+.xa-synaxari-new-widget .xa-image>a {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	text-align: center;
+}
+
+.xa-synaxari-new-widget .xa-image>a>img {
+	height: 100%;
+	width: auto;
+}

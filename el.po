@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XA ColorMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Sat May 14 2016 20:47:18 GMT+0300 (GTB Daylight Time)\n"
-"PO-Revision-Date: Sat Jun 11 2016 00:16:17 GMT+0300 (GTB Daylight Time)\n"
-"Last-Translator: ConstR <constracti@gmail.com>\n"
-"Language-Team: \n"
-"Language: Greek\n"
+"POT-Creation-Date: 2017-05-29 21:48+0000\n"
+"PO-Revision-Date: 2017-05-29 21:52+0000\n"
+"Last-Translator: constracti <constracti@gmail.com>\n"
+"Language-Team: Greek\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,119 +22,339 @@ msgstr ""
 "X-Loco-Target-Locale: el_GR\n"
 "X-Generator: Loco - https://localise.biz/"
 
-#: functions.php:37 /functions.php:77
-#, php-format
-msgid ""
-"<span class=\"posted-on\"><a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><i "
-"class=\"fa fa-calendar-o\"></i> %3$s</a></span>"
+#: questions.php:10
+msgid "solved questions"
 msgstr ""
-"<span class=\"posted-on\"><a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><i "
-"class=\"fa fa-calendar-o\"></i> %3$s</a></span>"
 
-#: functions.php:87
-msgid "<i class=\"fa fa-comment\"></i> 0 Comment"
-msgstr "0 Σχόλια"
+#: questions.php:11
+msgid "published questions"
+msgstr ""
 
-#: functions.php:87
-msgid "<i class=\"fa fa-comment\"></i> 1 Comment"
-msgstr "1 σχόλιο"
+#: questions.php:12
+msgid "future questions"
+msgstr ""
 
-#: functions.php:87
+#: cities.php:32
+msgid "Title"
+msgstr ""
+
+#: cities.php:33
+msgid "Male author"
+msgstr ""
+
+#: cities.php:34
+msgid "Female author"
+msgstr ""
+
+#: cities.php:49
+msgctxt "m"
+msgid "none"
+msgstr ""
+
+#: authors.php:38
+msgid "Username"
+msgstr ""
+
+#: authors.php:39
+msgid "Email"
+msgstr ""
+
+#: authors.php:94
+msgid "male author"
+msgstr ""
+
+#: authors.php:95
+msgid "female author"
+msgstr ""
+
+#: settings.php:19
+msgid "city author parent category"
+msgstr ""
+
+#: settings.php:42
+msgid "author type property"
+msgstr ""
+
+#: settings.php:45 settings.php:137 synaxari/settings.php:42
+#: share-post/index.php:27
+msgid "clear"
+msgstr "καθαρισμός"
+
+#: settings.php:52 settings.php:144 synaxari/settings.php:49
+msgid "sure?"
+msgstr ""
+
+#: settings.php:52 settings.php:144 synaxari/settings.php:49
+#: share-post/metabox.php:32
+msgid "reset"
+msgstr "επαναφορά"
+
+#: settings.php:59
+msgid "name"
+msgstr ""
+
+#: settings.php:79
+msgid "city author guide page"
+msgstr ""
+
+#: settings.php:110
+msgid "city parent page"
+msgstr ""
+
+#: synaxari/widget.php:13
+msgid "XA Synaxari"
+msgstr ""
+
+#: synaxari/widget.php:21 widgets/synaxari.php:21
+msgid "Show a random today's synaxari post."
+msgstr ""
+
+#: synaxari/settings.php:45
 #, php-format
-msgid "<i class=\"fa fa-comments\"></i> % Comments"
-msgstr "% Σχόλια"
+msgid "delete metadata %s from posts not in %s"
+msgstr ""
 
-#: functions.php:89
-msgid ", "
-msgstr ","
+#: synaxari/settings.php:52
+#, php-format
+msgid "delete metadata %s from all posts"
+msgstr ""
 
-#: functions.php:92
-msgid "Edit"
-msgstr "Επεξεργασία"
+#: synaxari/settings.php:92 synaxari/settings.php:109 share-post/index.php:62
+#, php-format
+msgid "deleted metadata of %d posts"
+msgstr ""
 
-#. Name of the theme
-msgid "XA ColorMag"
-msgstr "XA ColorMag"
+#: settings/index.php:40
+msgid "Options are immediately saved."
+msgstr ""
+
+#: widgets/future.php:15
+msgid "XA Future Posts"
+msgstr ""
+
+#: widgets/future.php:19
+msgid "Display future posts of a specific category vertically."
+msgstr ""
+
+#: widgets/central.php:15 widgets/beside.php:24
+msgid "categories"
+msgstr ""
+
+#: widgets/central.php:33
+msgid "children"
+msgstr ""
+
+#: widgets/central.php:59
+msgid "XA Central New"
+msgstr ""
+
+#: widgets/central.php:63
+msgid "Display latest posts of multiple categories in a slider."
+msgstr ""
+
+#: widgets/featured2.php:10 widgets/featured1.php:10 widgets/slider.php:10
+msgid "number"
+msgstr ""
+
+#: widgets/featured2.php:11
+msgid "highlight"
+msgstr ""
+
+#: widgets/featured2.php:16
+msgid "XA Featured Posts (Style 2)"
+msgstr ""
+
+#: widgets/featured2.php:24
+msgid "Display latest posts of a category vertically."
+msgstr ""
+
+#: widgets/selector.php:11 widgets/middle.php:10
+msgid "cookie"
+msgstr ""
+
+#: widgets/selector.php:12
+msgid "message"
+msgstr ""
+
+#: widgets/selector.php:13
+msgid "city"
+msgstr ""
+
+#: widgets/selector.php:14
+msgid "section"
+msgstr ""
+
+#: widgets/selector.php:19
+msgid "XA Selector New"
+msgstr ""
+
+#: widgets/selector.php:27
+msgid "Display dropdown lists to filter content of other widgets."
+msgstr ""
+
+#: widgets/synaxari.php:13
+msgid "XA Synaxari New"
+msgstr ""
+
+#: widgets/popular.php:11
+msgid "days"
+msgstr ""
+
+#: widgets/popular.php:16
+msgid "XA Popular Posts"
+msgstr ""
+
+#: widgets/popular.php:20
+msgid "Display popular posts of a time period."
+msgstr ""
+
+#: widgets/featured1.php:15
+msgid "XA Featured Posts (Style 1)"
+msgstr ""
+
+#: widgets/featured1.php:23
+msgid "Display latest posts of a category horizontally."
+msgstr ""
+
+#: widgets/slider.php:14
+msgid "mode"
+msgstr ""
+
+#: widgets/slider.php:37
+msgid "XA Slider New"
+msgstr ""
+
+#: widgets/slider.php:45
+msgid "Display latest posts of a category in a slider."
+msgstr ""
+
+#: widgets/widget.php:10
+msgid "title"
+msgstr ""
+
+#: widgets/archive.php:11
+msgid "prompt"
+msgstr ""
+
+#: widgets/archive.php:16
+msgid "XA Archive"
+msgstr ""
+
+#: widgets/archive.php:24
+msgid "Display a dropdown list with links to city authors."
+msgstr ""
+
+#: widgets/middle.php:15
+msgid "XA Middle New"
+msgstr ""
+
+#: widgets/middle.php:19
+msgid "Display latest posts of a category vertically, filter by a selector."
+msgstr ""
+
+#: widgets/beside.php:73
+msgid "XA Beside New"
+msgstr ""
+
+#: widgets/beside.php:81
+msgid "Display latest post of several categories."
+msgstr ""
+
+#: widgets/banner.php:11
+msgid "link"
+msgstr ""
+
+#: widgets/banner.php:12
+msgid "text"
+msgstr ""
+
+#: widgets/banner.php:13
+msgid "image"
+msgstr ""
+
+#: widgets/banner.php:14
+msgid "border"
+msgstr ""
+
+#: widgets/banner.php:15
+msgid "columns"
+msgstr ""
+
+#: widgets/banner.php:20
+msgid "XA Banner"
+msgstr ""
+
+#: widgets/banner.php:28
+msgid "Display a link as an image."
+msgstr ""
+
+#: share-post/index.php:14 share-post/custom-column.php:9
+#: share-post/metabox.php:9
+msgid "Share post"
+msgstr "Μοίρασμα δημοσίευσης"
 
 #. Description of the theme
-msgid "Colormag Child Theme"
-msgstr "Colormag Child Theme"
+msgid "ColorMag Child Theme"
+msgstr ""
 
-#: author-metabox.php:10
-msgid "Category"
-msgstr "Κατηγορία"
+#. Author of the theme
+msgid "constracti"
+msgstr ""
 
-#: last-active.php:14
-msgid "Last active"
-msgstr "Τελευταία ενέργεια"
-
-#: last-active.php:23
-msgid "never"
-msgstr "ποτέ"
-
-#: last-active.php:24
-msgid "ago"
-msgstr "πριν"
-
-#: author-type.php:7
-msgid "Type"
-msgstr "Τύπος"
-
-#: author-type.php:15
-msgid "category"
-msgstr "κατηγορία"
-
-#: author-type.php:16
-msgctxt "m"
-msgid "author"
-msgstr "συντάκτης"
-
-#: author-type.php:17
-msgctxt "f"
-msgid "author"
-msgstr "συντάκτρια"
-
-#: settings.php:8 /settings.php:9 /settings.php:21
-msgid "XA Settings"
-msgstr "ΧΑ Ρυθμίσεις"
-
-#: settings.php:25
-msgid "reset last active property"
-msgstr "επαναφορά ιδιότητας τελευταίας ενέργειας"
-
-#: settings.php:27 /settings.php:54
-msgid "Reset"
-msgstr "Επαναφορά"
-
-#: settings.php:29
-msgid "delete last active property from all users"
-msgstr "διαγραφή ιδιότητας τελευταίας ενέργειας από όλους τους χρήστες"
-
-#: settings.php:33
-msgid "city parent category"
-msgstr "γονική κατηγορία πόλεων"
-
-#: settings.php:37
+#: cities.php:53 settings.php:22 settings.php:82 settings.php:113
+#: synaxari/settings.php:29 widgets/widget.php:75 widgets/beside.php:50
 msgctxt "f"
 msgid "none"
 msgstr "καμία"
 
-#: settings.php:48
-msgid "city authors can select from children of this category"
-msgstr "οι συντάκτες πόλεων μπορούν να επιλέξουν από τα παιδιά αυτής της κατηγορίας"
+#: city_author_metabox.php:10
+msgid "Category"
+msgstr "Κατηγορία"
 
-#: settings.php:52
-msgid "reset author type property"
-msgstr "επαναφορά ιδιότητας τύπου συντάκτη"
+#: authors.php:40
+msgid "Type"
+msgstr "Τύπος"
 
-#: settings.php:56
-msgid "delete author type property from all users"
-msgstr "διαγραφή ιδιότητας τύπου συντάκτη από όλους τους χρήστες"
+#: authors.php:93 synaxari/settings.php:19 widgets/widget.php:11
+msgid "category"
+msgstr "κατηγορία"
 
-#: settings.php:77 /settings.php:97
-msgid "user properties deleted"
-msgstr "ιδιότητες χρήστη διαγράφηκαν"
+#: settings.php:14 settings/index.php:14
+msgid "Authors"
+msgstr "Συντάκτες"
 
-#. Author of the theme
-msgid "Const R."
-msgstr "Κωνσταντίνος Ρ."
+#: settings.php:105 settings/index.php:15
+msgid "Cities"
+msgstr "Πόλεις"
+
+#: settings.php:134 synaxari/settings.php:39 share-post/index.php:25
+msgid "property"
+msgstr "ιδιότητα"
+
+#: synaxari/metabox.php:20 synaxari/settings.php:8
+msgid "Synaxari"
+msgstr "Συναξάρι"
+
+#: synaxari/metabox.php:32 share-post/metabox.php:30
+msgid "save"
+msgstr "αποθήκευση"
+
+#: synaxari/metabox.php:34 widgets/beside.php:35
+msgid "add"
+msgstr "προσθήκη"
+
+#: synaxari/metabox.php:55 widgets/beside.php:54
+msgid "delete"
+msgstr "διαγραφή"
+
+#: settings/index.php:13
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: settings/index.php:26 settings/index.php:145
+msgid "XA"
+msgstr "ΧΑ"
+
+#. Name of the theme
+msgid "XA ColorMag"
+msgstr "XA ColorMag"

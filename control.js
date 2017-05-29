@@ -1,8 +1,10 @@
+// TODO rename class xa-control-items-container to xa-control-container
+
 jQuery( document ).on( 'click', '.xa-control-add', function() {
 	var container = jQuery( this ).parents( '.xa-control-items-container' );
 	var items = container.find( '.xa-control-items' );
 	var item = container.find( '.xa-control-item0' ).find( '.xa-control-item' );
-	item.clone( true ).appendTo( items ).children( 'select' ).focus();
+	item.clone().appendTo( items ).children( 'select' ).first().focus();
 } );
 
 jQuery( document ).on( 'click', '.xa-control-up', function() {

@@ -3,14 +3,14 @@
 if ( !defined( 'ABSPATH' ) )
 	exit;
 
-final class XA_Synaxari_New_Widget extends XA_Widget {
+final class XA_Synaxari_Widget extends XA_Widget {
 
 	function settings(): array {
 		return [];
 	}
 
 	function name(): string {
-		return __( 'XA Synaxari New', 'xa' );
+		return __( 'XA Synaxari', 'xa' );
 	}
 
 	function classname(): string {
@@ -48,5 +48,5 @@ final class XA_Synaxari_New_Widget extends XA_Widget {
 }
 
 add_action( 'widgets_init', function() {
-	register_widget( 'XA_Synaxari_New_Widget' );
+	register_widget( 'XA_Synaxari_Widget' );
 } );

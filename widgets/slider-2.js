@@ -1,7 +1,7 @@
-jQuery( function() {
+jQuery( document ).ready( function( $ ) {
 
-jQuery( ".xa-slider-new" ).each( function() {
-	var slider = jQuery( this );
+$( '.xa_slider_widget ul' ).each( function() {
+	var slider = $( this );
 	slider.bxSlider( {
 		mode : slider.data('mode'),
 		auto : true,

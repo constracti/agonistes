@@ -1,3 +1,5 @@
+jQuery( document ).ready( function( $ ) {
+
 function xa_ajax( element, action ) {
 	var data = {
 		action: action,
@@ -10,14 +12,14 @@ function xa_ajax( element, action ) {
 			data.value = element.val();
 	}
 	element.siblings( 'input[type="hidden"]' ).each( function() {
-		var hidden = jQuery( this );
+		var hidden = $( this );
 		data[ hidden.prop( 'name' ) ] = hidden.val();
 	} );
 	var spinner = element.siblings( '.spinner' );
 	if ( spinner.hasClass( 'is-active' ) )
 		return;
 	spinner.addClass( 'is-active' );
-	jQuery.post( ajaxurl, data ).done( function( data, textStatus, jqXHR ) {
+	$.post( ajaxurl, data ).done( function( data, textStatus, jqXHR ) {
 		if ( typeof( data ) !== 'object' )
 			alert( data );
 	} ).fail( function( jqXHR, textStatus, errorThrown ) {
@@ -27,22 +29,20 @@ function xa_ajax( element, action ) {
 	} );
 }
 
-jQuery( function() {
-
-jQuery( '.xa_option' ).change( function() {
-	xa_ajax( jQuery( this ), 'xa_option' );
+$( '.xa_option' ).change( function() {
+	xa_ajax( $( this ), 'xa_option' );
 } );
 
-jQuery( '.xa_post_meta' ).change( function() {
-	xa_ajax( jQuery( this ), 'xa_post_meta' );
+$( '.xa_post_meta' ).change( function() {
+	xa_ajax( $( this ), 'xa_post_meta' );
 } );
 
-jQuery( '.xa_user_meta' ).change( function() {
-	xa_ajax( jQuery( this ), 'xa_user_meta' );
+$( '.xa_user_meta' ).change( function() {
+	xa_ajax( $( this ), 'xa_user_meta' );
 } );
 
-jQuery( '.xa_button' ).click( function() {
-	var button = jQuery( this );
+$( '.xa_button' ).click( function() {
+	var button = $( this );
 	if ( button.data( 'confirm' ) !== undefined )
 		if ( !confirm( button.data( 'confirm' ) ) )
 			return;

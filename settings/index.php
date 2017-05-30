@@ -142,7 +142,7 @@ add_action( 'admin_menu', function() {
 	do_action( 'xa_menu' );
 	global $xa_tabs;
 	$capability = 'administrator';
-	$prefix = __( 'XA', 'xa' );
+	$prefix = 'XA';
 	if ( !current_user_can( $capability ) )
 		return;
 	$page_title = sprintf( '%s :: %s', $prefix, array_values( $xa_tabs )[0] );
@@ -165,3 +165,7 @@ add_action( 'admin_enqueue_scripts', function( $hook ) {
 		return;
 	wp_enqueue_script( 'xa_main', XA_URL . '/settings/index.js', [ 'jquery' ] );
 } );
+
+require_once( XA_DIR . '/settings/settings.php' );
+require_once( XA_DIR . '/settings/authors.php' );
+require_once( XA_DIR . '/settings/cities.php' );

@@ -1,13 +1,15 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: XA ColorMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-29 21:48+0000\n"
-"PO-Revision-Date: 2017-05-29 21:52+0000\n"
-"Last-Translator: constracti <constracti@gmail.com>\n"
-"Language-Team: Greek\n"
-"Language: el\n"
-"Plural-Forms: nplurals=2; plural=n != 1\n"
+"POT-Creation-Date: 2017-05-30 22:27+0000\n"
+"POT-Revision-Date: Sun May 15 2016 00:57:02 GMT+0300 (GTB Daylight Time)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: ConstR <constracti@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,18 +23,6 @@ msgstr ""
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Loco-Target-Locale: el_GR\n"
 "X-Generator: Loco - https://localise.biz/"
-
-#: questions.php:10
-msgid "solved questions"
-msgstr ""
-
-#: questions.php:11
-msgid "published questions"
-msgstr ""
-
-#: questions.php:12
-msgid "future questions"
-msgstr ""
 
 #: cities.php:32
 msgid "Title"
@@ -51,6 +41,16 @@ msgctxt "m"
 msgid "none"
 msgstr ""
 
+#: cities.php:53 settings.php:22 settings.php:82 settings.php:113
+#: synaxari/settings.php:29 widgets/widget.php:75 widgets/beside.php:50
+msgctxt "f"
+msgid "none"
+msgstr ""
+
+#: city_author_metabox.php:10
+msgid "Category"
+msgstr ""
+
 #: authors.php:38
 msgid "Username"
 msgstr ""
@@ -59,12 +59,24 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
+#: authors.php:40
+msgid "Type"
+msgstr ""
+
+#: authors.php:93 synaxari/settings.php:19 widgets/widget.php:11
+msgid "category"
+msgstr ""
+
 #: authors.php:94
 msgid "male author"
 msgstr ""
 
 #: authors.php:95
 msgid "female author"
+msgstr ""
+
+#: settings.php:14 settings/index.php:14
+msgid "Authors"
 msgstr ""
 
 #: settings.php:19
@@ -78,7 +90,7 @@ msgstr ""
 #: settings.php:45 settings.php:137 synaxari/settings.php:42
 #: share-post/index.php:27
 msgid "clear"
-msgstr "καθαρισμός"
+msgstr ""
 
 #: settings.php:52 settings.php:144 synaxari/settings.php:49
 msgid "sure?"
@@ -87,7 +99,7 @@ msgstr ""
 #: settings.php:52 settings.php:144 synaxari/settings.php:49
 #: share-post/metabox.php:32
 msgid "reset"
-msgstr "επαναφορά"
+msgstr ""
 
 #: settings.php:59
 msgid "name"
@@ -97,16 +109,40 @@ msgstr ""
 msgid "city author guide page"
 msgstr ""
 
+#: settings.php:105 settings/index.php:15
+msgid "Cities"
+msgstr ""
+
 #: settings.php:110
 msgid "city parent page"
+msgstr ""
+
+#: settings.php:134 synaxari/settings.php:39 share-post/index.php:25
+msgid "property"
 msgstr ""
 
 #: synaxari/widget.php:13
 msgid "XA Synaxari"
 msgstr ""
 
-#: synaxari/widget.php:21 widgets/synaxari.php:21
+#: synaxari/widget.php:21
 msgid "Show a random today's synaxari post."
+msgstr ""
+
+#: synaxari/metabox.php:20 synaxari/settings.php:8
+msgid "Synaxari"
+msgstr ""
+
+#: synaxari/metabox.php:32 share-post/metabox.php:30
+msgid "save"
+msgstr ""
+
+#: synaxari/metabox.php:34 widgets/beside.php:35
+msgid "add"
+msgstr ""
+
+#: synaxari/metabox.php:55 widgets/beside.php:54
+msgid "delete"
 msgstr ""
 
 #: synaxari/settings.php:45
@@ -122,6 +158,14 @@ msgstr ""
 #: synaxari/settings.php:92 synaxari/settings.php:109 share-post/index.php:62
 #, php-format
 msgid "deleted metadata of %d posts"
+msgstr ""
+
+#: settings/index.php:13
+msgid "Settings"
+msgstr ""
+
+#: settings/index.php:26
+msgid "XA"
 msgstr ""
 
 #: settings/index.php:40
@@ -190,10 +234,6 @@ msgstr ""
 
 #: widgets/selector.php:27
 msgid "Display dropdown lists to filter content of other widgets."
-msgstr ""
-
-#: widgets/synaxari.php:13
-msgid "XA Synaxari New"
 msgstr ""
 
 #: widgets/popular.php:11
@@ -288,10 +328,26 @@ msgstr ""
 msgid "Display a link as an image."
 msgstr ""
 
+#: questions/index.php:10
+msgid "solved questions"
+msgstr ""
+
+#: questions/index.php:11
+msgid "published questions"
+msgstr ""
+
+#: questions/index.php:12
+msgid "future questions"
+msgstr ""
+
 #: share-post/index.php:14 share-post/custom-column.php:9
 #: share-post/metabox.php:9
 msgid "Share post"
-msgstr "Μοίρασμα δημοσίευσης"
+msgstr ""
+
+#. Name of the theme
+msgid "XA ColorMag"
+msgstr ""
 
 #. Description of the theme
 msgid "ColorMag Child Theme"
@@ -300,61 +356,3 @@ msgstr ""
 #. Author of the theme
 msgid "constracti"
 msgstr ""
-
-#: cities.php:53 settings.php:22 settings.php:82 settings.php:113
-#: synaxari/settings.php:29 widgets/widget.php:75 widgets/beside.php:50
-msgctxt "f"
-msgid "none"
-msgstr "καμία"
-
-#: city_author_metabox.php:10
-msgid "Category"
-msgstr "Κατηγορία"
-
-#: authors.php:40
-msgid "Type"
-msgstr "Τύπος"
-
-#: authors.php:93 synaxari/settings.php:19 widgets/widget.php:11
-msgid "category"
-msgstr "κατηγορία"
-
-#: settings.php:14 settings/index.php:14
-msgid "Authors"
-msgstr "Συντάκτες"
-
-#: settings.php:105 settings/index.php:15
-msgid "Cities"
-msgstr "Πόλεις"
-
-#: settings.php:134 synaxari/settings.php:39 share-post/index.php:25
-msgid "property"
-msgstr "ιδιότητα"
-
-#: synaxari/metabox.php:20 synaxari/settings.php:8
-msgid "Synaxari"
-msgstr "Συναξάρι"
-
-#: synaxari/metabox.php:32 share-post/metabox.php:30
-msgid "save"
-msgstr "αποθήκευση"
-
-#: synaxari/metabox.php:34 widgets/beside.php:35
-msgid "add"
-msgstr "προσθήκη"
-
-#: synaxari/metabox.php:55 widgets/beside.php:54
-msgid "delete"
-msgstr "διαγραφή"
-
-#: settings/index.php:13
-msgid "Settings"
-msgstr "Ρυθμίσεις"
-
-#: settings/index.php:26 settings/index.php:145
-msgid "XA"
-msgstr "ΧΑ"
-
-#. Name of the theme
-msgid "XA ColorMag"
-msgstr "XA ColorMag"

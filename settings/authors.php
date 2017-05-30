@@ -16,13 +16,13 @@ function xa_authors_page() {
 	xa_footer();
 }
 
-add_action( 'admin_enqueue_scripts', function( $hook ) {
+add_action( 'admin_enqueue_scripts', function( string $hook ) {
 	if ( !current_user_can( 'administrator' ) )
 		return;
 	if ( $hook !== 'xa_page_xa_authors' )
 		return;
-	wp_enqueue_style( 'xa_authors', XA_URL . '/authors.css' );
-	wp_enqueue_script( 'xa_authors', XA_URL . '/authors.js', ['jquery'] );
+	wp_enqueue_style( 'xa_authors', XA_URL . '/settings/authors.css' );
+	wp_enqueue_script( 'xa_authors', XA_URL . '/settings/authors.js', ['jquery'] );
 } );
 
 if ( !class_exists( 'WP_List_Table' ) )

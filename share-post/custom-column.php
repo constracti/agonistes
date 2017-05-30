@@ -3,14 +3,14 @@
 if ( ! defined( 'ABSPATH' ) )
 	exit;
 
-add_filter( 'manage_posts_columns', function( array $columns ): array {
+add_filter( 'manage_post_posts_columns', function( array $columns ): array {
 	if ( !current_user_can( 'edit_pages' ) )
 		return $columns;
 	$columns['share-post'] = __( 'Share post', 'xa' );
 	return $columns;
 } );
 
-add_action( 'manage_posts_custom_column', function( string $column, int $post_id ) {
+add_action( 'manage_post_posts_custom_column', function( string $column, int $post_id ) {
 	if ( $column !== 'share-post' )
 		return;
 	$meta = get_post_meta( $post_id, 'xa_share_post', FALSE );

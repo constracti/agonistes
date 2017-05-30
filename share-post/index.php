@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) )
 	exit;
 
 # TODO unnecessary share-post property some authors
+# TODO reset property
 
 require_once( XA_DIR . '/share-post/filter.php' );
 require_once( XA_DIR . '/share-post/metabox.php' );

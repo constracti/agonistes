@@ -7,10 +7,13 @@ define( 'XA_URL', get_stylesheet_directory_uri() );
 /* load theme textdomain */
 
 add_action( 'after_setup_theme', function() {
-	load_theme_textdomain( 'xa', XA_DIR );
+	load_theme_textdomain( 'xa', XA_DIR . '/languages' );
 } );
 
 require_once( XA_DIR . '/settings/index.php' );
+
+require_once( XA_DIR . '/city_author_metabox.php' );
+require_once( XA_DIR . '/category_author.php' );
 
 require_once( XA_DIR . '/widgets/index.php' );
 
@@ -18,8 +21,6 @@ require_once( XA_DIR . '/navigation/index.php' );
 require_once( XA_DIR . '/questions/index.php' );
 require_once( XA_DIR . '/share-post/index.php' );
 require_once( XA_DIR . '/synaxari/index.php' );
-
-require_once( XA_DIR . '/main.php' );
 
 add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_style( 'colormag_style', get_template_directory_uri() . '/style.css' );

@@ -5,7 +5,6 @@ if ( !defined( 'ABSPATH' ) )
 
 # TODO rename option xa_author_category to xa_city_category
 # TODO rename user meta xa_author to xa_user_type
-# TODO delete sharing property
 
 function xa_settings_page() {
 	if ( !current_user_can( 'administrator' ) )

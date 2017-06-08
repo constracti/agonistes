@@ -24,6 +24,7 @@ class XA_Slider_New_Widget extends XA_Widget {
 				echo '</p>' . "\n";
 			},
 		];
+		$settings['thumbnails'] = $this->settings_checkbox( __( 'thumbnails', 'xa' ) );
 		return $settings;
 	}
 
@@ -54,7 +55,7 @@ class XA_Slider_New_Widget extends XA_Widget {
 
 	final function content( array $instance ) {
 		$query = new WP_Query( $this->query( $instance ) );
-		echo sprintf( '<ul data-mode="%s">', $instance['mode'] ) . "\n";
+		echo sprintf( '<ul class="xa-slider" data-mode="%s">', $instance['mode'] ) . "\n";
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			echo '<li>' . "\n";
@@ -63,6 +64,18 @@ class XA_Slider_New_Widget extends XA_Widget {
 			echo '</li>' . "\n";
 		}
 		echo '</ul>' . "\n";
+		if ( $instance['thumbnails'] ) {
+			$query->rewind_posts();
+			$style = sprintf ( 'max-width: calc( ( 100%% - %d * 2px ) / %d );', $query->post_count - 1, $query->post_count );
+			echo '<div class="xa-pager">' . "\n";
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				echo sprintf( '<a href="%s" data-slide-index="%d" style="%s">', get_permalink(), $query->current_post, $style ) . "\n";
+				echo get_the_post_thumbnail( NULL, 'thumbnail', [ 'title' => get_the_title() ] ) . "\n";
+				echo '</a>' . "\n";
+			}
+			echo '</div>' . "\n";
+		}
 		wp_reset_query();
 	}
 
@@ -75,6 +88,6 @@ add_action( 'widgets_init', function() {
 add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_style( 'xa-bxslider', XA_URL . '/widgets/bxslider.css' );
 	wp_enqueue_script( 'xa-bxslider', XA_URL . '/widgets/bxslider.min.js', ['jquery'] );
-	wp_enqueue_style( 'xa-slider', XA_URL . '/widgets/slider-2.css', ['colormag_style', 'xa-bxslider'] );
-	wp_enqueue_script( 'xa-slider', XA_URL . '/widgets/slider-2.js', ['jquery', 'xa-bxslider'] );
+	wp_enqueue_style( 'xa-slider', XA_URL . '/widgets/slider-3.css', ['colormag_style', 'xa-bxslider'] );
+	wp_enqueue_script( 'xa-slider', XA_URL . '/widgets/slider-3.js', ['jquery', 'xa-bxslider'] );
 } );

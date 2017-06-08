@@ -107,5 +107,5 @@ add_action( 'widgets_init', function() {
 } );
 
 add_action( 'wp_enqueue_scripts', function() {
-	wp_enqueue_style( 'xa-beside', XA_URL . '/widgets/beside-1.css', ['colormag_style'] );
+	wp_enqueue_style( 'xa-beside', XA_URL . '/widgets/beside-2.css', ['colormag_style'] );
 } );

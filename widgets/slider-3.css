@@ -1,0 +1,44 @@
+.xa_slider_widget figure {
+	width: 100%;
+	padding-bottom: 56.25%;
+	position: relative;
+}
+
+.xa_slider_widget figure>a {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+}
+
+.xa_slider_widget figure>a>img {
+	height: 100%;
+	width: auto;
+	margin: auto;
+}
+
+
+/* xa-pager */
+
+.xa_slider_widget .xa-pager {
+	margin-top: -58px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.xa_slider_widget .xa-pager a img {
+	height: 100%;
+	opacity: 0.6;
+}
+
+.xa_slider_widget .xa-pager a:hover img {
+	opacity: 0.8;
+}
+
+.xa_slider_widget .xa-pager a.active img {
+	opacity: 0.8;
+}
+
+.xa_slider_widget .xa-pager a.active:hover img {
+	opacity: 1.0;
+}

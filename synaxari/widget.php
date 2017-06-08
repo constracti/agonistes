@@ -37,7 +37,7 @@ final class XA_Synaxari_Widget extends XA_Widget {
 		] );
 		if ( $query->have_posts() ) {
 			$query->the_post();
-			echo '<div class="">' . "\n";
+			echo '<div style="position: relative;">' . "\n";
 			xa_figure_div( 'colormag-featured-image', 'slider-featured-image.png' );
 			xa_content_div( 'slide', [ 'category' => FALSE, 'meta' => FALSE ] );
 			echo '</div>' . "\n";

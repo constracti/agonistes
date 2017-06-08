@@ -35,6 +35,32 @@ add_action( 'admin_enqueue_scripts', function( string $hook ) {
 } );
 
 
+function colormag_colored_category() {
+	$categories = get_the_category();
+	$output = '';
+	if ( !empty( $categories ) ) {
+		$output .= '<div class="above-entry-meta">' . "\n";
+		$output .= '<span class="cat-links">' . "\n";
+		foreach ( $categories as $category ) {
+			$color_code = colormag_category_color( $category->term_id );
+			if ( empty( $color_code ) ) {
+				$style = '';
+			} else {
+				$style = colormag_category_color( $category->term_id );
+				$style = sprintf( 'background-color: %s;', $style );
+				$style = sprintf( ' style="%s"', esc_attr( $style ) );
+			}
+			$output .= sprintf( '<a href="%s"%s rel="category tag">%s</a>',
+				get_category_link( $category->term_id ),
+				$style,
+				esc_html( $category->name )
+			) . "\n";
+		}
+		$output .='</span></div>';
+		echo trim($output, $separator);
+	}
+}
+
 function colormag_footer_copyright() {
 }
 

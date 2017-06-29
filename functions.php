@@ -31,7 +31,7 @@ add_action( 'wp_enqueue_scripts', function() {
 /* dynamically add, delete and move content */
 
 add_action( 'admin_enqueue_scripts', function( string $hook ) {
-	wp_enqueue_script( 'xa-control', XA_URL . '/control.js', ['jquery'] );
+	wp_enqueue_script( 'xa-control', XA_URL . '/control.js', [ 'jquery' ] );
 } );
 
 

@@ -9,8 +9,28 @@ function xa_navigation() {
 	global $xa_query;
 	if ( is_null( $xa_query ) )
 		return;
-	$href = get_permalink( get_option( 'page_for_posts' ) );
-	echo sprintf( '<p id="xa-navigation" data-href="%s">', $href ) . "\n";
+	echo sprintf( '<p id="xa-navigation" data-href="%s">',
+		esc_url( get_permalink( get_option( 'page_for_posts' ) ) )
+	) . "\n";
+	$user0 = 0;
+	if ( array_key_exists( 'author_name', $xa_query ) ) {
+		$user = $xa_query['author_name'];
+		$user = get_user_by( 'slug', $user );
+		if ( $user !== FALSE )
+			$user0 = $user->ID;
+	}
+	$authors = get_users( [
+		'meta_key' => 'xa_author',
+		'meta_value' => ['m', 'f'],
+		'meta_compare' => 'IN',
+		'orderby' => 'display_name',
+		'order' => 'ASC',
+	] );
+	echo '<select style="min-width: calc( 33.3% - 3px );">' . "\n";
+	echo sprintf( '<option value="">%s</option>', esc_html__( 'Author' ) ) . "\n";
+	foreach ( $authors as $author )
+		xa_navigation_user( $author, $user0 );
+	echo '</select>' . "\n";
 	$cat0 = 0;
 	if ( array_key_exists( 'category_name', $xa_query ) ) {
 		$cat = $xa_query['category_name'];
@@ -28,29 +48,28 @@ function xa_navigation() {
 		'hide_empty' => FALSE,
 		'parent' => 0,
 	] );
-	echo '<select>' . "\n";
-	echo sprintf( '<option value="">%s</option>', __( 'Categories' ) ) . "\n";
+	echo '<select style="min-width: calc( 33.3% - 3px );">' . "\n";
+	echo sprintf( '<option value="">%s</option>', esc_html__( 'Categories' ) ) . "\n";
 	foreach ( $cats as $cat )
 		xa_navigation_category( $cat, $cat0 );
 	echo '</select>' . "\n";
-	$user0 = 0;
-	if ( array_key_exists( 'author_name', $xa_query ) ) {
-		$user = $xa_query['author_name'];
-		$user = get_user_by( 'slug', $user );
-		if ( $user !== FALSE )
-			$user0 = $user->ID;
+	$tag0 = 0;
+	if ( array_key_exists( 'tag', $xa_query ) ) {
+		$tag = $xa_query['tag'];
+		$tag = get_term_by( 'slug', $tag, 'post_tag' );
+		if ( $tag !== FALSE )
+			$tag0 = $tag->term_id;
 	}
-	$authors = get_users( [
-		'meta_key' => 'xa_author',
-		'meta_value' => ['m', 'f'],
-		'meta_compare' => 'IN',
-		'orderby' => 'display_name',
+	$tags = get_terms( [
+		'taxonomy' => 'post_tag',
+		'orderby' => 'name',
 		'order' => 'ASC',
+		'hide_empty' => FALSE,
 	] );
-	echo '<select>' . "\n";
-	echo sprintf( '<option value="">%s</option>', __( 'Author' ) ) . "\n";
-	foreach ( $authors as $author )
-		xa_navigation_user( $author, $user0 );
+	echo '<select style="min-width: calc( 33.3% - 3px );">' . "\n";
+	echo sprintf( '<option value="">%s</option>', esc_html__( 'Tags' ) ) . "\n";
+	foreach ( $tags as $tag )
+		xa_navigation_tag( $tag, $tag0 );
 	echo '</select>' . "\n";
 	echo '</p>' . "\n";
 ?>
@@ -75,6 +94,7 @@ jQuery( document ).ready( function( $ ) {
 			href = p.data( 'href' );
 		else if ( params.length > 0 )
 			href += '?' + params.join( '&' );
+		$( this ).val( $( this ).prop( 'defaultValue' ) );
 		location.href = href;
 	} );
 } );
@@ -82,14 +102,26 @@ jQuery( document ).ready( function( $ ) {
 <?php
 }
 
+function xa_navigation_user( WP_User $user, int $user0 ) {
+	echo sprintf( '<option value="%d" data-href="%s" data-slug="author_name=%s"%s>%s</option>',
+		$user->ID,
+		esc_url( get_author_posts_url( $user->ID ) ),
+		esc_attr( $user->user_nicename ),
+		selected( $user->ID, $user0, FALSE ),
+		esc_html( $user->display_name )
+	) . "\n";
+}
+
 function xa_navigation_category( WP_Term $cat, int $cat0, int $level = 0 ) {
 	$indent = str_repeat( '&nbsp;', 3 );
-	$value = $cat->term_id;
-	$href = get_category_link( $cat->term_id );
-	$slug = $cat->slug;
-	$selected = selected( $cat->term_id, $cat0, FALSE );
-	$html = sprintf( '%s%s (%d)', str_repeat( $indent, $level ), $cat->name, $cat->count );
-	echo sprintf( '<option value="%d" data-href="%s" data-slug="category_name=%s"%s>%s</option>', $cat->term_id, $href, $slug, $selected, $html ) . "\n";
+	echo sprintf( '<option value="%d" data-href="%s" data-slug="category_name=%s"%s>%s%s</option>',
+		$cat->term_id,
+		esc_url( get_category_link( $cat->term_id ) ),
+		esc_attr( $cat->slug ),
+		selected( $cat->term_id, $cat0, FALSE ),
+		str_repeat( $indent, $level ),
+		esc_html( sprintf( '%s (%d)', $cat->name, $cat->count ) )
+	) . "\n";
 	$cats = get_terms( [
 		'taxonomy' => 'category',
 		'hide_empty' => FALSE,
@@ -99,11 +131,12 @@ function xa_navigation_category( WP_Term $cat, int $cat0, int $level = 0 ) {
 		xa_navigation_category( $cat, $cat0, $level + 1 );
 }
 
-function xa_navigation_user( WP_User $user, int $user0 ) {
-	$value = $user->ID;
-	$href = get_author_posts_url( $user->ID );
-	$slug = $user->user_nicename;
-	$selected = selected( $user->ID, $user0, FALSE );
-	$html = $user->display_name;
-	echo sprintf( '<option value="%d" data-href="%s" data-slug="author_name=%s"%s>%s</option>', $value, $href, $slug, $selected, $html ) . "\n";
+function xa_navigation_tag( WP_Term $tag, int $tag0 ) {
+	echo sprintf( '<option value="%d" data-href="%s" data-slug="tag=%s"%s>%s</option>',
+		$tag->term_id,
+		esc_url( get_term_link( $tag->term_id ) ),
+		esc_attr( $tag->slug ),
+		selected( $tag->term_id, $tag0, FALSE ),
+		esc_html( sprintf( '%s (%d)', $tag->name, $tag->count ) )
+	) . "\n";
 }

@@ -86,4 +86,11 @@ add_action( 'pre_get_posts', function( WP_Query $query ) {
 		$q['p'] = -1;
 	$q['xa_share_post'] = TRUE;
 	$query->parse_query( $q );
+	/*
+	if ( !empty( $as ) ) {
+		$query->is_archive = TRUE;
+		$query->is_author = TRUE;
+		$query->is_home = FALSE;
+	}
+	*/
 } );

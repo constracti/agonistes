@@ -27,6 +27,11 @@ add_action( 'wp_enqueue_scripts', function() {
 	wp_enqueue_style( 'xa-colormag', XA_URL . '/style.css', [ 'colormag_style' ] );
 } );
 
+add_action( 'wp_head', function() {
+	$color = get_theme_mod( 'colormag_primary_color', '#289dcc' );
+	echo sprintf( '<meta name="theme-color" content="%s" />', $color ) . "\n";
+} );
+
 
 /* dynamically add, delete and move content */
 

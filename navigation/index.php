@@ -140,3 +140,57 @@ function xa_navigation_tag( WP_Term $tag, int $tag0 ) {
 		esc_html( sprintf( '%s (%d)', $tag->name, $tag->count ) )
 	) . "\n";
 }
+
+FALSE && add_action( 'wp', function() {
+	if ( !current_user_can( 'administrator' ) )
+		return;
+	global $wp_filter;
+	foreach ( $wp_filter as $key => $value )
+		if ( strpos( $key, 'description' ) !== FALSE )
+			var_dump( $key, $value );
+	exit;
+} );
+
+add_filter( 'term_description', 'do_shortcode' );
+
+add_shortcode( 'xa-navigation-term', function( $atts ) {
+	if ( !current_user_can( 'administrator' ) ) # TODO delete
+		return '';
+	if ( !is_category() && !is_tag() && !is_tax() )
+		return '';
+	$cterm = get_queried_object();
+	$path = [];
+	$term = $cterm;
+	for ( $term = $cterm; !is_null( $term ); $term = get_term( $term->parent ) ) {
+		$path[] = $term;
+		if ( $term->term_id === intval( $atts['term'] ) )
+			break;
+	}
+	$term = array_pop( $path );
+	if ( $term->term_id === $cterm->term_id )
+		$class = 'xa-navigation-term-current';
+	else
+		$class = 'xa-navigation-term-ancestor';
+	$html = sprintf( '<p><a class="%s" href="%s">%s</a></p>', $class, esc_url( get_term_link( $term ) ), esc_html( $term->name ) ) . "\n";
+	while ( !is_null( $term ) ) {
+		$next = array_pop( $path );
+		$terms = get_terms( [
+			'taxonomy' => $term->taxonomy,
+			'hide_empty' => FALSE,
+			'parent' => $term->term_id,
+		] );
+		$items = [];
+		foreach ( $terms as $term ) {
+			if ( $term->term_id === $cterm->term_id )
+				$class = 'xa-navigation-term-current';
+			elseif ( !is_null( $next ) && $term->term_id === $next->term_id )
+				$class = 'xa-navigation-term-ancestor';
+			else
+				$class = '';
+			$items[] = sprintf( '<a class="%s" href="%s">%s</a>', $class, esc_url( get_term_link( $term ) ), esc_html( $term->name ) );
+		}
+		$html .= '<p>' . implode( ' | ', $items ) . '</p>' . "\n";
+		$term = $next;
+	}
+	return $html;
+} );

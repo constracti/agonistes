@@ -108,13 +108,23 @@ function colormag_entry_meta() {
 }
 
 function xa_time_span() {
-	$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-	$time_string = sprintf( $time_string,
-		esc_attr( get_the_date( 'c' ) ), esc_html( get_the_date() )
+	$html = sprintf( '<time class="entry-date published" datetime="%s">%s</time>',
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() )
 	);
-	printf( __( '<span class="posted-on"><a href="%1$s" title="%2$s" rel="bookmark"><i class="fa fa-calendar-o"></i> %3$s</a></span>', 'colormag' ),
-		esc_url( get_permalink() ), esc_attr( get_the_time() ), $time_string
-	);
+	$html = '<i class="fa fa-calendar-o"></i> ' . $html;
+	if ( get_post_status() === 'publish' || current_user_can( 'read_post', get_the_ID() ) )
+		$html = sprintf( '<a href="%s" title="%s" rel="bookmark">%s</a>',
+			esc_url( get_permalink() ),
+			esc_attr( get_the_time() ),
+			$html
+		);
+	else
+		$html = sprintf( '<a href="#" title="%s" onclick="return false;">%s</a>',
+			esc_attr( get_the_time() ),
+			$html
+		);
+	printf( __( '<span class="posted-on">%s</span>', 'colormag' ), $html );
 }
 
 function xa_author_span() {
@@ -131,7 +141,9 @@ function xa_author_span() {
 }
 
 function xa_comments_span() {
-?>
-<span class="comments"><i class="fa fa-comment"></i><?php comments_popup_link( '0', '1', '%' );?></span>
-<?php
+	if ( get_post_status() === 'publish' || current_user_can( 'read_post', get_the_ID() ) ) {
+		echo '<span class="comments"><i class="fa fa-comment"></i>';
+		comments_popup_link( '0', '1', '%' );
+		echo '</span>' . "\n";
+	}
 }

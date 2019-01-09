@@ -18,23 +18,26 @@ require_once( XA_DIR . '/widgets/middle.php' );
 
 function xa_figure_div( string $size, string $png = '' ) {
 	if ( has_post_thumbnail() )
-		echo sprintf( '<figure><a href="%s" title="%s">%s</a></figure>',
-			esc_url( get_permalink() ),
-			esc_attr( get_the_title() ),
-			get_the_post_thumbnail( NULL, $size, [
-				'title' => esc_attr( get_the_title() ),
-				'alt' => esc_attr( get_the_title() ),
-			] )
-		) . "\n";
+		$html = get_the_post_thumbnail( NULL, $size, [
+			'title' => esc_attr( get_the_title() ),
+			'alt' => esc_attr( get_the_title() ),
+		] );
 	elseif ( $png !== '' )
-		echo sprintf( '<figure><a href="%s" title="%s"><img src="%s/img/%s" title="%s" alt="%s" /></a></figure>',
-			esc_url( get_permalink() ),
-			esc_attr( get_the_title() ),
+		$html = sprintf( '<img src="%s/img/%s" title="%s" alt="%s" />',
 			get_template_directory_uri(),
 			$png,
 			esc_attr( get_the_title() ),
 			esc_attr( get_the_title() )
-		) . "\n";
+		);
+	else
+		$html = '';
+	if ( get_post_status() === 'publish' || current_user_can( 'read_post', get_the_ID() ) )
+		$html = sprintf( '<a href="%s" title="%s">%s</a>',
+			esc_url( get_permalink() ),
+			esc_attr( get_the_title() ),
+			$html
+		);
+	echo '<figure>' . $html . '</figure>' . "\n";
 }
 
 function xa_content_div( string $prefix, array $args = [] ) {
@@ -49,11 +52,14 @@ function xa_content_div( string $prefix, array $args = [] ) {
 	echo sprintf( '<div class="%s-content">', $prefix ) . "\n";
 	if ( $args['category'] )
 		colormag_colored_category();
-	echo sprintf( '<h3 class="entry-title"><a href="%s" title="%s">%s</a></h3>',
-		esc_url( get_permalink() ),
-		esc_attr( get_the_title() ),
-		esc_html( get_the_title() )
-	) . "\n";
+	$html = esc_html( get_the_title() );
+	if ( get_post_status() === 'publish' || current_user_can( 'read_post', get_the_ID() ) )
+		$html = sprintf( '<a href="%s" title="%s">%s</a>',
+			esc_url( get_permalink() ),
+			esc_attr( get_the_title() ),
+			$html
+		);
+	echo '<h3 class="entry-title">' . $html . '</h3>' . "\n";
 	if ( $args['meta'] ) {
 		echo '<div class="below-entry-meta">' . "\n";
 		xa_time_span();

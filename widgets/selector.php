@@ -68,7 +68,7 @@ final class XA_Selector_New_Widget extends XA_Widget {
 	}
 
 	private function nonce( string $name, int $number ) {
-		return sprintf( '%s-%d' );
+		return sprintf( '%s-%d', $name, $number );
 	}
 
 	static function cookie_city( string $cookie ): int {

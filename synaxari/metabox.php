@@ -4,12 +4,9 @@ if ( !defined( 'ABSPATH' ) )
 	exit;
 
 function xa_synaxari_access(): bool {
-	if ( current_user_can( 'edit_pages' ) )
+	if ( current_user_can( 'edit_others_posts' ) )
 		return TRUE;
 	$user = wp_get_current_user();
-	$meta = get_user_meta( $user->ID, 'xa_author', TRUE );
-	if ( $meta !== 'c' )
-		return FALSE;
 	$cat = get_category( intval( get_option( 'xa_synaxari_category' ) ) );
 	return $cat->slug === $user->user_login;
 }

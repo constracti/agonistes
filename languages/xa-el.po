@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XA ColorMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-14 07:19+0000\n"
-"PO-Revision-Date: 2018-07-14 07:19+0000\n"
-"Last-Translator: constracti <constracti@gmail.com>\n"
+"POT-Creation-Date: 2020-04-27 16:22+0000\n"
+"PO-Revision-Date: 2020-04-27 16:22+0000\n"
+"Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -20,17 +20,14 @@ msgstr ""
 "esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Loco-Target-Locale: el_GR\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.3; wp-5.4"
 
-#: city_author_metabox.php:10
-msgid "Category"
-msgstr "Κατηγορία"
-
-#: synaxari/settings.php:8 synaxari/metabox.php:20
+#: synaxari/settings.php:8 synaxari/metabox.php:17
 msgid "Synaxari"
 msgstr "Συναξάρι"
 
-#: synaxari/settings.php:19 widgets/widget.php:11 settings/authors.php:93
+#: synaxari/settings.php:19 widgets/widget.php:11
 msgid "category"
 msgstr "κατηγορία"
 
@@ -74,15 +71,15 @@ msgstr ""
 msgid "deleted metadata of %d posts"
 msgstr ""
 
-#: synaxari/metabox.php:32 share-post/metabox.php:30
+#: synaxari/metabox.php:29 share-post/metabox.php:30
 msgid "save"
 msgstr "αποθήκευση"
 
-#: synaxari/metabox.php:34 widgets/beside.php:35
+#: synaxari/metabox.php:31 widgets/beside.php:35
 msgid "add"
 msgstr "προσθήκη"
 
-#: synaxari/metabox.php:55 widgets/beside.php:54
+#: synaxari/metabox.php:52 widgets/beside.php:54
 msgid "delete"
 msgstr "διαγραφή"
 
@@ -299,23 +296,23 @@ msgstr "Πόλεις"
 msgid "city parent page"
 msgstr ""
 
-#: settings/authors.php:38
+#: settings/authors.php:37
 msgid "Username"
 msgstr ""
 
-#: settings/authors.php:39
+#: settings/authors.php:38
 msgid "Email"
 msgstr ""
 
-#: settings/authors.php:40
+#: settings/authors.php:39
 msgid "Type"
 msgstr "Τύπος"
 
-#: settings/authors.php:94
+#: settings/authors.php:92
 msgid "male author"
 msgstr "συντάκτης"
 
-#: settings/authors.php:95
+#: settings/authors.php:93
 msgid "female author"
 msgstr "συντάκτρια"
 

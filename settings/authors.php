@@ -9,7 +9,7 @@ function xa_authors_page() {
 	xa_header();
 	xa_description( 'set user meta xa_author' );
 	xa_description( 'only non-subscribers are listed' );
-	xa_description( 'c for category authors, m for city male authors and f for city female authors' );
+	xa_description( 'm for city male authors and f for city female authors' );
 	$table = new XA_Authors_Table();
 	$table->prepare_items();
 	$table->display();
@@ -21,7 +21,6 @@ add_action( 'admin_enqueue_scripts', function( string $hook ) {
 		return;
 	if ( $hook !== 'xa_page_xa_authors' )
 		return;
-	wp_enqueue_style( 'xa_authors', XA_URL . '/settings/authors.css' );
 	wp_enqueue_script( 'xa_authors', XA_URL . '/settings/authors.js', ['jquery'] );
 } );
 
@@ -90,7 +89,6 @@ final class XA_Authors_Table extends WP_List_Table {
 		$this->items = $users;
 		$this->url = admin_url( 'user-edit.php' );
 		$this->types = [
-			'c' => __( 'category', 'xa' ),
 			'm' => __( 'male author', 'xa' ),
 			'f' => __( 'female author', 'xa' ),
 		];

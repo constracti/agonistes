@@ -12,9 +12,6 @@ add_action( 'after_setup_theme', function() {
 
 require_once( XA_DIR . '/settings/index.php' );
 
-require_once( XA_DIR . '/city_author_metabox.php' );
-require_once( XA_DIR . '/category_author.php' );
-
 require_once( XA_DIR . '/widgets/index.php' );
 
 require_once( XA_DIR . '/navigation/index.php' );

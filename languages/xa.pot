@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XA ColorMag\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-14 07:19+0000\n"
+"POT-Creation-Date: 2020-04-27 16:22+0000\n"
 "POT-Revision-Date: Sun May 15 2016 00:57:02 GMT+0300 (GTB Daylight Time)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: ConstR <constracti@gmail.com>\n"
@@ -24,15 +24,11 @@ msgstr ""
 "X-Loco-Target-Locale: el_GR\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: city_author_metabox.php:10
-msgid "Category"
-msgstr ""
-
-#: synaxari/settings.php:8 synaxari/metabox.php:20
+#: synaxari/settings.php:8 synaxari/metabox.php:17
 msgid "Synaxari"
 msgstr ""
 
-#: synaxari/settings.php:19 widgets/widget.php:11 settings/authors.php:93
+#: synaxari/settings.php:19 widgets/widget.php:11
 msgid "category"
 msgstr ""
 
@@ -76,15 +72,15 @@ msgstr ""
 msgid "deleted metadata of %d posts"
 msgstr ""
 
-#: synaxari/metabox.php:32 share-post/metabox.php:30
+#: synaxari/metabox.php:29 share-post/metabox.php:30
 msgid "save"
 msgstr ""
 
-#: synaxari/metabox.php:34 widgets/beside.php:35
+#: synaxari/metabox.php:31 widgets/beside.php:35
 msgid "add"
 msgstr ""
 
-#: synaxari/metabox.php:55 widgets/beside.php:54
+#: synaxari/metabox.php:52 widgets/beside.php:54
 msgid "delete"
 msgstr ""
 
@@ -301,23 +297,23 @@ msgstr ""
 msgid "city parent page"
 msgstr ""
 
-#: settings/authors.php:38
+#: settings/authors.php:37
 msgid "Username"
 msgstr ""
 
-#: settings/authors.php:39
+#: settings/authors.php:38
 msgid "Email"
 msgstr ""
 
-#: settings/authors.php:40
+#: settings/authors.php:39
 msgid "Type"
 msgstr ""
 
-#: settings/authors.php:94
+#: settings/authors.php:92
 msgid "male author"
 msgstr ""
 
-#: settings/authors.php:95
+#: settings/authors.php:93
 msgid "female author"
 msgstr ""
 

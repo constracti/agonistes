@@ -14,8 +14,8 @@ require_once( XA_DIR . '/settings/index.php' );
 
 require_once( XA_DIR . '/widgets/index.php' );
 
-require_once( XA_DIR . '/navigation/index.php' );
-require_once( XA_DIR . '/questions/index.php' );
+require_once( XA_DIR . '/nav.php' );
+require_once( XA_DIR . '/questions.php' );
 require_once( XA_DIR . '/share-post/index.php' );
 require_once( XA_DIR . '/synaxari/index.php' );
 

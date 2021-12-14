@@ -11,7 +11,7 @@ add_shortcode( 'xa-questions-list', function( array $atts ): string {
 		'publish' => __( 'published questions', 'xa' ),
 		'future' => __( 'future questions', 'xa' ),
 	], $atts );
-	if ( $cat === 0 )
+	if ( $atts['cat'] === 0 )
 		return '';
 	$atts['tags'] = array_map( 'intval', explode( ',', $atts['tags'] ) );
 	$html = '';

@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/constracti/agonistes
  * Description: Customization plugin of agonistes.gr website.
  * Author: constracti
- * Version: 0.3
+ * Version: 0.4
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: agonistes
@@ -28,7 +28,6 @@ foreach ( $files as $file ) {
 
 // return plugin version
 function agonistes_version(): string {
-	return strval( time() ); // TODO delete line
 	$plugin_data = get_plugin_data( __FILE__ );
 	return $plugin_data['Version'];
 }

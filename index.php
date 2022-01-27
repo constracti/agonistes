@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/constracti/agonistes
  * Description: Customization plugin of agonistes.gr website.
  * Author: constracti
- * Version: 0.4.1
+ * Version: 0.4.2
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: agonistes
@@ -38,20 +38,21 @@ add_action( 'init', function(): void {
 } );
 
 // replace default gallery
-add_action( 'init', function(): void {
+add_filter( 'pre_do_shortcode_tag', function( string|bool $return, string $tag, array|string $attr, array $m ): string|bool {
+	if ( $tag !== 'gallery' )
+		return FALSE;
+	if ( !is_array( $attr ) )
+		return FALSE;
 	if ( !shortcode_exists( 'fusion_gallery' ) )
-		return;
-	remove_shortcode( 'gallery' );
-	add_shortcode( 'gallery', function( array $atts ): string {
-		$shortcode = '[fusion_gallery';
-		if ( array_key_exists( 'ids', $atts ) )
-			$shortcode .= sprintf( ' image_ids="%s"', $atts['ids'] );
-		if ( array_key_exists( 'columns', $atts ) )
-			$shortcode .= sprintf( ' columns="%d"', $atts['columns'] );
-		$shortcode .= ' lightbox="yes"][/fusion_gallery]';
-		return do_shortcode( $shortcode );
-	} );
-} );
+		return FALSE;
+	$shortcode = '[fusion_gallery';
+	if ( array_key_exists( 'ids', $attr ) )
+		$shortcode .= sprintf( ' image_ids="%s"', $attr['ids'] );
+	if ( array_key_exists( 'columns', $attr ) )
+		$shortcode .= sprintf( ' columns="%d"', $attr['columns'] );
+	$shortcode .= ' lightbox="yes"][/fusion_gallery]';
+	return do_shortcode( $shortcode );
+}, 10, 4 );
 
 // accept tag__in variable in main query
 add_filter( 'query_vars', function( array $qvars ): array {

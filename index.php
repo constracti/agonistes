@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/constracti/agonistes
  * Description: Customization plugin of agonistes.gr website.
  * Author: constracti
- * Version: 0.4.2
+ * Version: 0.4.3
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: agonistes
@@ -39,15 +39,16 @@ add_action( 'init', function(): void {
 
 // replace default gallery
 add_filter( 'pre_do_shortcode_tag', function( string|bool $return, string $tag, array|string $attr, array $m ): string|bool {
+	if ( !shortcode_exists( 'fusion_gallery' ) )
+		return FALSE;
 	if ( $tag !== 'gallery' )
 		return FALSE;
 	if ( !is_array( $attr ) )
 		return FALSE;
-	if ( !shortcode_exists( 'fusion_gallery' ) )
+	if ( !array_key_exists( 'ids', $attr ) )
 		return FALSE;
 	$shortcode = '[fusion_gallery';
-	if ( array_key_exists( 'ids', $attr ) )
-		$shortcode .= sprintf( ' image_ids="%s"', $attr['ids'] );
+	$shortcode .= sprintf( ' image_ids="%s"', $attr['ids'] );
 	if ( array_key_exists( 'columns', $attr ) )
 		$shortcode .= sprintf( ' columns="%d"', $attr['columns'] );
 	$shortcode .= ' lightbox="yes"][/fusion_gallery]';

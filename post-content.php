@@ -18,7 +18,7 @@ final class Agonistes_Post_Content {
 		$key = self::select( $post );
 		if ( !is_null( $key ) )
 			return FALSE;
-		self::$posts[] = $post->ID;
+		self::$posts[] = $post;
 		return TRUE;
 	}
 
@@ -57,8 +57,6 @@ final class Agonistes_Post_Content {
 add_shortcode( 'agonistes_post_content', [ 'Agonistes_Post_Content', 'shortcode' ] );
 
 FALSE && add_action( 'init', function(): void {
-	if ( !current_user_can( 'administrator' ) )
-		return;
 	global $shortcode_tags;
 	$ks = array_keys( $shortcode_tags );
 	$vs = array_values( $shortcode_tags );

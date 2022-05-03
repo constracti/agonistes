@@ -24,7 +24,7 @@ final class Agonistes_Post_Content {
 
 	private static function delete( int $post ): bool {
 		$key = self::select( $post );
-		if ( !is_null( $key ) )
+		if ( is_null( $key ) )
 			return FALSE;
 		unset( self::$posts[$key] );
 		return TRUE;

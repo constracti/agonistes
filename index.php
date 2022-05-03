@@ -77,3 +77,7 @@ add_action( 'wp_head', function(): void {
 		return;
 	echo '<style type="text/css">#comments.comments-container{display: none;}</style>' . "\n";
 } );
+
+add_action( 'init', function(): void {
+	add_post_type_support( 'page', 'excerpt' );
+} );
